@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMA Finance — Affiliate Partnerships</title>
+<meta name="description" content="TMA affiliate program for advisors, coaches, consultants, and agencies — refer clients who need a finance team and earn a recurring monthly commission for as long as they stay. No client management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0B2540;
+  --deep2:#103253;
+  --card-d:#0E2C4A;
+  --mint:#74B4E8;
+  --sage:#8FB4D8;
+  --mint-soft:#ABCFEC;
+  --teal:#1E6FB8;
+  --teal-ink:#15517F;
+  --amber:#E8A23C;
+  --cream:#F7F0DC;
+  --softmint:#E6EFF7;
+  --softblue:#EAF1F8;
+  --bg:#F4F7FB;
+  --ink:#112338;
+  --muted:#5A6B7D;
+  --muted-d:#A6BBD0;
+  --line-l:rgba(17,35,56,.12);
+  --line-d:rgba(116,180,232,.16);
+  --f:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+::selection{background:var(--mint);color:var(--deep)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-ink)}
+.eyebrow::before{content:"";width:30px;height:2px;background:currentColor;border-radius:2px;opacity:.8}
+.dark .eyebrow{color:var(--mint)}
+.amber-eyebrow{color:var(--amber)!important}
+h2.sec{font-weight:800;letter-spacing:-.025em;line-height:1.06;font-size:clamp(34px,4.6vw,56px);margin:18px 0 16px}
+.sec-sub{color:var(--muted);font-size:18px;line-height:1.65;max-width:600px}
+.dark .sec-sub{color:var(--muted-d)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.num{font-variant-numeric:tabular-nums}
+
+/* ====== фирменный знак (SVG, цвет наследуется) ====== */
+.mark{display:block}
+.mark .cube{transform-box:fill-box;transform-origin:50% 50%}
+.mark .fold{opacity:.5}
+.logo:hover .mark .cube,.mark.wave .cube{animation:cubejump .55s cubic-bezier(.3,1.6,.4,1)}
+.logo:hover .mark .cube:nth-of-type(2),.mark.wave .cube:nth-of-type(2){animation-delay:.06s}
+.logo:hover .mark .cube:nth-of-type(3),.mark.wave .cube:nth-of-type(3){animation-delay:.12s}
+.logo:hover .mark .cube:nth-of-type(4),.mark.wave .cube:nth-of-type(4){animation-delay:.18s}
+.logo:hover .mark .cube:nth-of-type(5),.mark.wave .cube:nth-of-type(5){animation-delay:.24s}
+.logo:hover .mark .cube:nth-of-type(6),.mark.wave .cube:nth-of-type(6){animation-delay:.3s}
+@keyframes cubejump{0%,100%{transform:scale(1)}40%{transform:scale(.78)}70%{transform:scale(1.12)}}
+
+/* loader */
+#loader{position:fixed;inset:0;background:var(--deep);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .5s,visibility .5s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .mark{width:clamp(86px,13vw,120px);color:#fff}
+.ld-word{display:flex;gap:.3em;font-size:clamp(22px,3.2vw,34px);font-weight:700;color:#EAF2F9;letter-spacing:.01em}
+.ld-word .w{display:inline-flex;overflow:hidden}
+.ld-word i{font-style:normal;display:inline-block;white-space:nowrap;overflow:hidden;color:#C6D2DC}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(11,37,64,.85);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-bottom-color:var(--line-d)}
+.nav-in{max-width:1320px;margin:0 auto;padding:13px clamp(16px,2vw,28px);display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px;color:#fff}
+.logo .mark{width:34px;color:#fff}
+.nav-links{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--muted-d)}
+.nav-links a{transition:color .25s}
+.nav-links a:hover{color:#fff}
+.nav-cta{font-size:15px;font-weight:700;background:var(--teal);color:#fff;padding:11px 22px;border-radius:10px;transition:transform .25s,box-shadow .25s;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(116,180,232,.3)}
+@media(max-width:880px){.nav-links{display:none}}
+
+/* hero */
+.hero{background:radial-gradient(85% 90% at 78% 0%,#15517F 0%,var(--deep) 52%,#06182C 100%);color:#fff;padding:clamp(125px,15vh,175px) 0 clamp(70px,8vw,110px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.12fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero-tag{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);border:1px solid rgba(116,180,232,.3);padding:9px 18px;border-radius:999px;margin-bottom:26px}
+.hero-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-weight:800;letter-spacing:-.03em;line-height:1.05;font-size:clamp(34px,4.6vw,54px)}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.hero h1 .line>span{display:inline-block;transform:translateY(112%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+body.loaded .hero h1 .line>span{transform:none}
+body.loaded .hero h1 .line:nth-child(2)>span{transition-delay:.08s}
+body.loaded .hero h1 .line:nth-child(3)>span{transition-delay:.16s}
+.hero h1 .hl{color:var(--mint)}
+.hero-sub{margin:26px 0 32px;color:var(--muted-d);font-size:19px;line-height:1.65;max-width:520px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;padding:16px 30px;border-radius:12px;transition:transform .25s,box-shadow .25s}
+.btn i{font-style:normal;transition:transform .25s}
+.btn:hover i{transform:translateX(4px)}
+.btn-mint{background:var(--teal);color:#fff}
+.btn-mint:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(116,180,232,.28)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.25);color:#fff}
+.btn-ghost:hover{border-color:var(--mint)}
+.spots{font-size:15px;color:var(--muted-d);margin-bottom:20px}
+.hero-ticks{display:flex;flex-wrap:wrap;gap:18px;font-size:15px;color:var(--muted-d)}
+.hero-ticks span{display:inline-flex;align-items:center;gap:8px}
+
+/* hero dashboard */
+.dash-wrap{position:relative}
+.dash{background:linear-gradient(160deg,rgba(21,81,127,.85),rgba(11,37,64,.95));backdrop-filter:blur(6px);border:1px solid var(--line-d);border-radius:20px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.dash-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.dash-head b{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d);font-weight:700}
+.dash-badge{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--mint)}
+.dash-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint)}
+.dash-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:16px}
+.dash-row .k{color:var(--muted-d)}
+.dash-row .r{display:flex;align-items:baseline;gap:10px}
+.dash-row .v{font-weight:700;font-size:19px;color:#fff}
+.dash-row .d{font-size:13.5px;font-weight:600;color:var(--mint)}
+.dash-foot{margin-top:16px;font-size:13.5px;color:var(--muted-d);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chipfloat{position:absolute;background:rgba(11,37,64,.92);border:1px solid rgba(116,180,232,.35);border-radius:12px;padding:10px 16px;font-size:13.5px;font-weight:700;color:#fff;box-shadow:0 14px 40px rgba(0,0,0,.4);animation:bob 5s ease-in-out infinite}
+.chipfloat small{display:block;font-size:11.5px;font-weight:500;color:var(--muted-d)}
+.cf1{top:-18px;right:24px;color:var(--amber);border-color:rgba(232,162,60,.4);animation-delay:.8s}
+.cf2{left:-26px;bottom:84px}
+.cf2 b{color:var(--mint)}
+.cf3{right:-14px;bottom:-22px;font-weight:600;font-size:13px}
+.cf3 b{color:var(--mint)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(max-width:980px){.cf2{left:6px}.cf3{right:6px}}
+
+/* trust strip */
+.trust{background:#fff;border-bottom:1px solid var(--line-l)}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;padding:36px 0}
+.tr-item{display:flex;gap:14px;align-items:flex-start;padding:8px 18px}
+.tr-item svg{flex-shrink:0;margin-top:3px}
+.tr-item b{display:block;font-size:21px;font-weight:800}
+.tr-item span{font-size:15px;color:var(--muted)}
+
+/* FY chart */
+.chartsec{padding:clamp(90px,11vw,150px) 0}
+.chart-card{background:#fff;border:1px solid var(--line-l);border-radius:20px;padding:clamp(24px,3.5vw,44px);margin-top:46px;box-shadow:0 24px 60px rgba(17,35,56,.05)}
+.chart-card .ct{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.chart-card .ct b{font-size:18px;font-weight:700}
+.legend{display:flex;gap:18px;font-size:14px;color:var(--muted);align-items:center}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.fy-chart{display:block;width:100%;height:auto;max-height:340px}
+.fy-bars rect{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0)}
+.fy-hint{margin-top:14px;border:1px solid var(--line-l);border-radius:12px;padding:18px;text-align:center;font-size:15px;color:var(--muted)}
+.chart-stats{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,56px);margin-top:26px;padding-top:22px;border-top:1px solid var(--line-l)}
+.chart-stats .cs b{display:block;font-size:27px;font-weight:800}
+.chart-stats .cs b.gold{color:#B98A2F}
+.chart-stats .cs b.green{color:var(--teal-ink)}
+.chart-stats .cs span{font-size:14.5px;color:var(--muted)}
+.ill-note{margin-top:12px;font-size:13px;color:var(--muted)}
+
+/* three areas */
+.areas{padding:0 0 clamp(90px,11vw,150px)}
+.areas-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px}
+.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:46px}
+@media(max-width:880px){.areas-grid{grid-template-columns:1fr}}
+.area{position:relative;border-radius:20px;padding:38px 34px;min-height:300px;overflow:hidden;border:1px solid var(--line-l);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;gap:14px}
+.area:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(17,35,56,.1)}
+.area .ghost{position:absolute;right:18px;top:0;font-size:130px;font-weight:800;letter-spacing:-.05em;color:rgba(17,35,56,.07);line-height:1}
+.area .ic{width:46px;height:46px;border-radius:12px;background:rgba(30,111,184,.13);display:flex;align-items:center;justify-content:center}
+.area .tag{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-ink)}
+.area h3{font-size:clamp(24px,2.3vw,30px);font-weight:800;letter-spacing:-.02em;max-width:460px}
+.area p{font-size:16px;line-height:1.65;color:var(--muted);max-width:520px}
+.area .chips{display:flex;flex-wrap:wrap;gap:8px}
+.area .chips span{font-size:13.5px;font-weight:600;background:#fff;border:1px solid var(--line-l);padding:6px 13px;border-radius:999px;color:var(--teal-ink)}
+.area .more{margin-top:auto;font-size:15px;font-weight:700;color:var(--teal-ink);display:inline-flex;align-items:center;gap:8px}
+.area .more i{font-style:normal;transition:transform .25s}
+.area:hover .more i{transform:translateX(4px)}
+.a1{background:var(--softmint)}
+.a2{background:#fff}
+.a3{background:var(--cream);grid-column:1/-1}
+.a3 .tag,.a3 .more,.a3 .chips span{color:#A4781F}
+.a3 .ic{background:rgba(184,138,47,.14)}
+
+/* why tma */
+.why{padding:clamp(90px,11vw,150px) 0;background:#fff;border-top:1px solid var(--line-l);border-bottom:1px solid var(--line-l)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:46px}
+.why-card{border:1px solid var(--line-l);border-radius:16px;padding:28px 26px;background:var(--bg);transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+.why-card:hover{transform:translateY(-4px);border-color:rgba(30,111,184,.5)}
+.why-card .ic{width:44px;height:44px;border-radius:11px;background:rgba(30,111,184,.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.why-card h3{font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.3}
+.why-card p{font-size:15px;line-height:1.6;color:var(--muted)}
+.why-card .m{margin-top:auto;padding-top:18px;border-top:1px solid var(--line-l);font-size:14px;font-weight:700;color:var(--teal-ink);margin-top:auto}
+.why-card{min-height:280px}
+.why-card .m{margin-top:auto}
+
+/* testimonials */
+.testi{padding:clamp(90px,11vw,150px) 0}
+.t-big{background:#fff;border:1px solid var(--line-l);border-radius:20px;padding:clamp(28px,4vw,52px);margin-top:46px;box-shadow:0 24px 60px rgba(17,35,56,.05)}
+.stars{color:var(--amber);font-size:18px;letter-spacing:3px;margin-bottom:16px}
+.t-big p{font-size:clamp(19px,2vw,24px);line-height:1.55;font-weight:500;letter-spacing:-.01em}
+.t-big .who{margin-top:22px;font-size:15px;color:var(--teal-ink);font-weight:700}
+.t-big .who small{display:block;font-weight:500;color:var(--muted);margin-top:4px}
+.t-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.t-row{grid-template-columns:1fr}}
+.t-sm{background:#fff;border:1px solid var(--line-l);border-radius:16px;padding:28px}
+.t-sm p{font-size:16px;line-height:1.65}
+.t-sm .who{margin-top:14px;font-size:14px;color:var(--teal-ink);font-weight:700}
+
+/* upwork */
+.upwork{background:linear-gradient(160deg,#E9F0F8,#F3F7FB 50%,#E5EEF6);padding:clamp(80px,10vw,130px) 0}
+.up-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:26px}
+.up-head .l{display:flex;align-items:center;gap:14px}
+.up-head .mark{width:52px;color:var(--deep)}
+.up-head b{font-size:20px}
+.up-head .sub{font-size:14.5px;color:var(--muted)}
+.up-btn{font-size:15px;font-weight:700;background:#14A800;color:#fff;padding:12px 22px;border-radius:999px;transition:transform .25s;display:inline-flex;gap:8px;align-items:center}
+.up-btn:hover{transform:translateY(-2px)}
+.up-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.up-badges span{font-size:14px;font-weight:700;border:1px solid rgba(17,35,56,.18);padding:8px 16px;border-radius:999px;color:var(--teal-ink);background:#fff}
+.up-badges span.gold{color:#B98A2F}
+.up-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:#fff;border:1px solid var(--line-l);border-radius:16px;overflow:hidden;margin-bottom:26px}
+.up-stat{padding:22px 16px;text-align:center;border-right:1px solid var(--line-l)}
+.up-stat:last-child{border-right:none}
+.up-stat b{display:block;font-size:23px;font-weight:800}
+.up-stat b.gold{color:#B98A2F}
+.up-stat span{font-size:13.5px;color:var(--muted)}
+@media(max-width:760px){.up-stat{border-right:none;border-bottom:1px solid var(--line-l)}}
+.up-quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.up-q{background:#fff;border:1px solid var(--line-l);border-radius:16px;padding:26px;display:flex;flex-direction:column}
+.up-q .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.up-q .top .stars{margin:0;font-size:14px}
+.up-q .top .dt{font-size:13.5px;color:var(--muted)}
+.up-q p{font-size:15.5px;line-height:1.65;font-style:italic}
+.up-q .who{margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-ink)}
+.up-q .who small{display:block;font-weight:500;color:var(--muted);margin-top:3px}
+.up-note{margin-top:22px;font-size:13.5px;color:var(--muted)}
+.up-note a{color:var(--teal-ink);font-weight:700}
+
+/* AI close */
+.ai{background:radial-gradient(80% 90% at 50% 0%,#103253,var(--deep) 65%);color:#fff;padding:clamp(90px,11vw,150px) 0}
+.ai h2.sec .hl{color:var(--amber)}
+.ai-copy{max-width:640px;margin-bottom:14px}
+.ai-copy p{font-size:17.5px;line-height:1.7;color:var(--muted-d);margin-bottom:16px}
+.ai-copy p b{color:#fff;font-weight:600}
+.pow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 40px}
+.pow .lbl{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-d);font-weight:700;margin-right:6px}
+.pow span{font-size:14px;font-weight:700;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:8px 16px;border-radius:999px}
+.pow span em{font-style:normal;font-size:11px;font-weight:700;color:var(--amber);margin-left:8px;letter-spacing:.06em}
+.pipe{background:rgba(11,37,64,.55);border:1px solid var(--line-d);border-radius:20px;padding:clamp(22px,3.5vw,40px);display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:start}
+@media(max-width:880px){.pipe{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.pipe{grid-template-columns:1fr}}
+.pstep{text-align:center;position:relative;padding:10px 6px}
+.pstep .ptag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.16em;color:var(--amber);border:1px solid rgba(232,162,60,.35);padding:6px 13px;border-radius:999px;margin-bottom:18px}
+.pstep:last-child .ptag{color:var(--mint);border-color:rgba(116,180,232,.35)}
+.pstep .pic{width:62px;height:62px;border-radius:50%;background:rgba(232,162,60,.12);margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.pstep:last-child .pic{background:rgba(116,180,232,.12)}
+.pstep b{display:block;font-size:16.5px;margin-bottom:6px}
+.pstep span{font-size:14px;color:var(--muted-d);line-height:1.5}
+.pstep::after{content:"→";position:absolute;right:-12px;top:84px;color:rgba(232,162,60,.6);font-size:18px;animation:nudge 2.4s ease-in-out infinite}
+.pstep:last-child::after{display:none}
+@media(max-width:880px){.pstep::after{display:none}}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.pipe-hint{grid-column:1/-1;text-align:center;font-size:13.5px;color:var(--muted-d);padding-top:8px}
+.ai-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:18px}
+.ai-stat{background:rgba(11,37,64,.55);border:1px solid var(--line-d);border-radius:16px;padding:26px 22px;text-align:center}
+.ai-stat b{display:block;font-size:34px;font-weight:800;color:var(--mint)}
+.ai-stat b.or{color:var(--amber)}
+.ai-stat .t{font-size:15.5px;font-weight:700;margin-top:6px}
+.ai-stat span{display:block;font-size:13.5px;color:var(--muted-d);margin-top:3px}
+.ai-note{text-align:center;font-size:14.5px;color:var(--muted-d);margin-top:22px}
+
+/* industries */
+.inds{background:var(--deep);color:#fff;padding:0 0 clamp(90px,11vw,150px)}
+.inds .wrap{border-top:1px solid var(--line-d);padding-top:clamp(60px,7vw,90px)}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:46px}
+.ind{border-radius:16px;padding:30px 26px;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;background:linear-gradient(165deg,#15517F,#0B2540);border:1px solid var(--line-d);transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.ind::after{content:"";position:absolute;inset:0;background:radial-gradient(200px circle at var(--mx,80%) var(--my,20%),rgba(116,180,232,.1),transparent 70%);opacity:0;transition:opacity .35s;pointer-events:none}
+.ind:hover{transform:translateY(-4px);border-color:rgba(116,180,232,.4)}
+.ind:hover::after{opacity:1}
+.ind b{font-size:19px;font-weight:700}
+.ind span{font-size:14px;color:var(--muted-d);line-height:1.5}
+/* TODO: на референсе фото-карточки — добавить когда будут ассеты */
+
+/* process */
+.process{padding:clamp(90px,11vw,150px) 0}
+.proc-list{margin-top:46px;display:flex;flex-direction:column;gap:14px;max-width:820px;position:relative}
+.proc{display:flex;gap:20px;background:#fff;border:1px solid var(--line-l);border-radius:16px;padding:28px;transition:transform .3s,box-shadow .3s}
+.proc:hover{transform:translateX(6px);box-shadow:0 16px 44px rgba(17,35,56,.08)}
+.proc .n{width:46px;height:46px;border-radius:50%;background:rgba(30,111,184,.1);color:var(--teal-ink);font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.proc h3{font-size:19px;font-weight:700;margin-bottom:6px}
+.proc p{font-size:15.5px;line-height:1.6;color:var(--muted);margin-bottom:12px}
+.proc .chip{display:inline-block;font-size:13px;font-weight:600;color:var(--teal-ink);background:rgba(30,111,184,.1);padding:6px 13px;border-radius:999px}
+
+/* CTA */
+.cta{background:radial-gradient(70% 100% at 50% 0%,#143A5E,var(--deep));color:#fff;padding:clamp(90px,12vw,150px) 0}
+.cta h2{font-weight:800;font-size:clamp(34px,4.6vw,56px);letter-spacing:-.025em;line-height:1.08;max-width:640px}
+.cta p{margin:20px 0 32px;max-width:520px;color:var(--muted-d);font-size:18px;line-height:1.65}
+.cta .spots{margin:24px 0 0}
+.cta-ticks{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-size:15px;color:var(--muted-d)}
+
+/* calculator */
+.calcsec{padding:clamp(90px,11vw,150px) 0}
+.calc{background:var(--deep);color:#fff;border-radius:22px;padding:clamp(24px,4vw,48px);margin-top:46px;box-shadow:0 30px 80px rgba(11,37,64,.25)}
+.calc-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:26px}
+.calc-head b{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d);font-weight:700;display:block;margin-bottom:8px}
+.calc-head h3{font-size:clamp(22px,2.4vw,30px);font-weight:800}
+.roi{text-align:right}
+.roi b{font-size:clamp(36px,4.5vw,56px);font-weight:800;color:var(--mint)}
+.roi span{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d)}
+.calc-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:14px}
+.tile{background:var(--deep2);border:1px solid var(--line-d);border-radius:14px;padding:20px}
+.tile b{display:block;font-size:25px;font-weight:800;color:var(--mint)}
+.tile.cost b{color:#fff}
+.tile span{font-size:13px;color:var(--muted-d);text-transform:uppercase;letter-spacing:.08em}
+.cheaper{display:flex;align-items:center;gap:10px;border:1px solid rgba(116,180,232,.35);background:rgba(116,180,232,.07);border-radius:12px;padding:13px 18px;font-size:15px;color:var(--mint-soft);margin-bottom:24px}
+.cheaper b{color:var(--mint)}
+.calc-label{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d);font-weight:700;margin:26px 0 6px}
+.slider{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.slider .top{display:flex;justify-content:space-between;font-size:16px;margin-bottom:10px}
+.slider .top .val{font-weight:700;color:var(--mint)}
+.slider input[type=range]{width:100%;accent-color:var(--mint);cursor:pointer}
+.slider .hint{font-size:13px;color:rgba(166,187,208,.65);margin-top:6px}
+.vbar{margin-top:16px}
+.vbar .top{display:flex;justify-content:space-between;font-size:15.5px;margin-bottom:8px}
+.vbar .top b{font-weight:700}
+.vbar .track{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.vbar .fill{height:100%;border-radius:99px;background:var(--mint);width:0%;transition:width .5s ease}
+.vbar.v2 .fill{background:#74B4E8}
+.vbar.v3 .fill{background:var(--amber)}
+.vbar .hint{font-size:13px;color:rgba(166,187,208,.65);margin-top:5px}
+.calc .btn{width:100%;justify-content:center;margin-top:30px}
+.calc-note{text-align:center;font-size:13px;color:rgba(166,187,208,.65);margin-top:12px}
+
+/* footer */
+footer{background:var(--deep);color:var(--muted-d);padding:clamp(50px,7vw,80px) 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:clamp(24px,4vw,50px);padding-bottom:44px;border-bottom:1px solid var(--line-d)}
+@media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-brand .mark{width:44px;color:#fff;margin-bottom:16px}
+.foot-brand p{font-size:15px;line-height:1.65;max-width:300px;margin-bottom:18px}
+.foot-col b{display:block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.foot-col a{display:block;font-size:15px;padding:5px 0;transition:color .25s}
+.foot-col a:hover{color:var(--mint)}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:24px;font-size:14px}
+
+/* ===== v7.1: дорогое движение ===== */
+.wrap{max-width:1320px}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-7px;height:2px;width:100%;background:var(--mint);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.3,1)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.hero{position:relative}
+.hero::before,.hero::after{content:"";position:absolute;width:58vw;height:58vw;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.55}
+.hero::before{background:radial-gradient(circle,#1E6FB8,transparent 64%);top:-24vw;right:-14vw;animation:drift1 15s ease-in-out infinite alternate}
+.hero::after{background:radial-gradient(circle,rgba(116,180,232,.22),transparent 60%);bottom:-32vw;left:-16vw;animation:drift2 19s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(-7vw,6vw) scale(1.12)}}
+@keyframes drift2{to{transform:translate(8vw,-5vw) scale(1.09)}}
+.hero .wrap{position:relative;z-index:1}
+.cta{position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;width:48vw;height:48vw;border-radius:50%;filter:blur(80px);background:radial-gradient(circle,rgba(116,180,232,.16),transparent 60%);right:-18vw;top:-16vw;animation:drift1 17s ease-in-out infinite alternate;pointer-events:none}
+.cta .wrap{position:relative;z-index:1}
+.dash{will-change:transform;transition:transform .15s ease-out}
+.dash-wrap.in{transition:opacity .8s cubic-bezier(.2,.7,.2,1)}
+.area,.why-card,.up-q{position:relative;overflow:hidden}
+.area::after,.why-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(30,111,184,.1),transparent 65%);opacity:0;transition:opacity .35s;pointer-events:none}
+.area:hover::after,.why-card:hover::after{opacity:1}
+.area-mark{position:absolute;right:-24px;bottom:-30px;width:200px;color:rgba(17,35,56,.05);transform:rotate(-9deg);pointer-events:none}
+.a3 .area-mark{color:rgba(164,120,31,.07)}
+.why-card .ic{transition:transform .35s cubic-bezier(.2,.8,.3,1.3)}
+.why-card:hover .ic{transform:rotate(-8deg) scale(1.1)}
+.ind{justify-content:space-between;min-height:190px}
+.ind .iic{width:44px;height:44px;border-radius:11px;background:rgba(116,180,232,.1);display:flex;align-items:center;justify-content:center}
+.ind .arr{position:absolute;right:22px;bottom:26px;color:var(--mint);font-size:20px;opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s}
+.ind:hover .arr{opacity:1;transform:none}
+.ind>div:last-child{display:flex;flex-direction:column;gap:8px}
+
+/* ===== v7.2: крупнее, плотнее, дороже ===== */
+#sprog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--mint),#74B4E8);transform-origin:left;transform:scaleX(0);z-index:60;pointer-events:none}
+.btn{position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .65s ease}
+.btn:hover::before{left:140%}
+.sec-sub{font-size:19px;max-width:640px}
+.tr-item b{font-size:23px}
+.tr-item span{font-size:15.5px}
+.area h3{font-size:clamp(26px,2.5vw,32px)}
+.area p{font-size:17px;max-width:560px}
+.area .chips span{font-size:14px;padding:7px 14px}
+.why-card h3{font-size:19.5px}
+.why-card p{font-size:15.5px}
+.t-sm p{font-size:17px}
+.up-q p{font-size:16px}
+
+/* процесс: полноширинная таймлайн с рисующейся линией */
+.proc-list{max-width:none;padding-left:78px;position:relative;gap:18px}
+.proc-rail{position:absolute;left:23px;top:16px;bottom:16px;width:3px;background:rgba(30,111,184,.14);border-radius:3px}
+.proc-rail i{display:block;width:100%;height:0%;background:linear-gradient(180deg,var(--mint),var(--teal));border-radius:3px}
+.proc{position:relative;padding:36px 40px;gap:0}
+.proc .n{position:absolute;left:-78px;top:36px;width:50px;height:50px;background:#fff;border:2px solid rgba(30,111,184,.35);box-shadow:0 8px 22px rgba(17,35,56,.1);font-size:16px}
+.proc h3{font-size:23px;margin-bottom:8px}
+.proc p{font-size:17px;max-width:760px}
+.proc .chip{font-size:14px;padding:7px 15px}
+.proc:hover{transform:translateX(8px)}
+@media(max-width:700px){.proc-list{padding-left:0}.proc-rail{display:none}.proc .n{position:static;margin-bottom:14px}}
+
+/* CTA: левый текст + правый анимированный знак с орбитой */
+.cta-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+@media(max-width:920px){.cta-grid{grid-template-columns:1fr}.cta-visual{display:none}}
+.cta-visual{position:relative;height:440px;display:flex;align-items:center;justify-content:center}
+.cta-visual .bigmark{width:280px;color:rgba(116,180,232,.13);animation:markfloat 7s ease-in-out infinite}
+@keyframes markfloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-16px) rotate(3deg)}}
+.cta-visual .ring{position:absolute;width:380px;height:380px;border:1.5px dashed rgba(116,180,232,.28);border-radius:50%;animation:spin 36s linear infinite}
+.cta-visual .ring2{width:470px;height:470px;border-color:rgba(116,180,232,.14);animation-duration:55s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cta-visual .chipfloat{position:absolute}
+.cta-visual .cv1{top:30px;left:6%}
+.cta-visual .cv2{right:0;top:150px;animation-delay:1.2s}
+.cta-visual .cv3{bottom:42px;left:16%;animation-delay:2.2s}
+.cta-visual .chipfloat b{color:var(--mint)}
+
+/* индустрии: крупнее и ровнее */
+.ind{min-height:215px;padding:32px 28px}
+.ind .iic{width:48px;height:48px;border-radius:12px}
+.ind b{font-size:21px}
+.ind span{font-size:15px;line-height:1.55;color:#C3D2DF}
+.ind>div:last-child{padding-right:28px;gap:9px}
+
+/* ===== v7.3: плотнее, ярче, живее ===== */
+:root{
+  --deep:#0B2540;
+  --deep2:#103253;
+  --card-d:#0E2C4A;
+  --mint:#74B4E8;
+  --sage:#8FB4D8;
+  --mint-soft:#ABCFEC;
+  --teal:#1E6FB8;
+  --teal-ink:#15517F;
+  --amber:#E8A23C;
+  --cream:#F7F0DC;
+  --softmint:#E6EFF7;
+  --softblue:#EAF1F8;
+  --bg:#F4F7FB;
+  --ink:#112338;
+  --muted:#5A6B7D;
+  --muted-d:#A6BBD0;
+  --line-l:rgba(17,35,56,.12);
+  --line-d:rgba(116,180,232,.16);
+  --f:'Inter',system-ui,sans-serif;
+}
+.hero{padding:clamp(112px,13vh,150px) 0 clamp(56px,6vw,84px)}
+.chartsec,.why,.testi,.process,.calcsec,.ai,.cta{padding:clamp(64px,8vw,104px) 0}
+.areas{padding:0 0 clamp(64px,8vw,104px)}
+.upwork{padding:clamp(60px,7vw,96px) 0}
+.inds{padding:0 0 clamp(64px,8vw,104px)}
+.inds .wrap{padding-top:clamp(48px,6vw,72px)}
+h2.sec{margin:14px 0 14px}
+.areas-grid,.why-grid,.ind-grid,.proc-list,.chart-card,.t-big,.calc{margin-top:36px}
+.cta-visual{height:400px}
+
+/* текст на тёмном — ярче и крупнее */
+.hero-sub{font-size:20px;color:#D2DFEA}
+.hero-ticks{font-size:16px}
+.cta-ticks{font-size:16px}
+.spots{font-size:16px}
+.dash-row .k{color:#BCCCDC}
+.ai-copy p{color:#C6D2DC}
+.pstep span{color:#BCCCDC}
+
+/* индустрии: фикс слипшегося текста + живость */
+.ind .txt{display:flex;flex-direction:column;gap:9px;padding-right:30px}
+.ind .txt b{display:block}
+.ind .txt span{display:block;color:#D5E2EE;font-size:15.5px}
+.ind .iic{transition:transform .35s cubic-bezier(.2,.8,.3,1.4),background .35s}
+.ind:hover{box-shadow:0 20px 54px rgba(0,0,0,.35)}
+.ind:hover .iic{transform:translateY(-4px) rotate(-7deg);background:rgba(116,180,232,.2)}
+
+/* процесс: spotlight, призрачный номер, кружки загораются по линии */
+.proc::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(30,111,184,.09),transparent 65%);opacity:0;transition:opacity .35s;pointer-events:none}
+.proc:hover::after{opacity:1}
+.proc{overflow:hidden}
+.proc .gn{position:absolute;right:10px;top:-18px;font-size:112px;font-weight:800;letter-spacing:-.05em;color:rgba(17,35,56,.05);pointer-events:none;line-height:1}
+.proc .n{transition:background .4s,color .4s,border-color .4s,transform .4s}
+.proc.on .n{background:var(--teal);border-color:var(--teal);color:#fff;transform:scale(1.1);box-shadow:0 10px 26px rgba(30,111,184,.35)}
+
+/* ===== v7.4: живые карточки ===== */
+@property --bo{syntax:'<angle>';initial-value:0deg;inherits:false}
+.ind-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:980px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.ind-grid{grid-template-columns:1fr}}
+.ind{min-height:235px}
+.ind::before,.why-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;
+  background:conic-gradient(from var(--bo),transparent 0%,rgba(116,180,232,.55) 10%,transparent 26%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:bspin 6.5s linear infinite;pointer-events:none}
+.why-card::before{background:conic-gradient(from var(--bo),transparent 0%,rgba(30,111,184,.45) 10%,transparent 26%)}
+@keyframes bspin{to{--bo:360deg}}
+.ind:nth-child(1)::before,.why-card:nth-child(1)::before{animation-delay:0s}
+.ind:nth-child(2)::before,.why-card:nth-child(2)::before{animation-delay:-1.1s}
+.ind:nth-child(3)::before,.why-card:nth-child(3)::before{animation-delay:-2.2s}
+.ind:nth-child(4)::before,.why-card:nth-child(4)::before{animation-delay:-3.3s}
+.ind:nth-child(5)::before,.why-card:nth-child(5)::before{animation-delay:-4.4s}
+.ind:nth-child(6)::before{animation-delay:-5.5s}
+.ind .glow{position:absolute;width:170px;height:170px;border-radius:50%;filter:blur(14px);
+  background:radial-gradient(circle,rgba(116,180,232,.14),transparent 70%);
+  top:-46px;right:-36px;animation:glowdrift 9s ease-in-out infinite alternate;pointer-events:none}
+.ind:nth-child(2n) .glow{animation-delay:-3s}
+.ind:nth-child(3n) .glow{animation-delay:-6s}
+@keyframes glowdrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-130px,150px) scale(1.25)}}
+.ind .iic,.why-card .ic{animation:iicpulse 4.5s ease-in-out infinite}
+.ind:nth-child(2) .iic,.why-card:nth-child(2) .ic{animation-delay:-1.5s}
+.ind:nth-child(3) .iic,.why-card:nth-child(3) .ic{animation-delay:-3s}
+@keyframes iicpulse{0%,100%{box-shadow:0 0 0 0 rgba(116,180,232,0)}50%{box-shadow:0 0 26px 5px rgba(116,180,232,.22)}}
+.why-card .ic{--pc:rgba(30,111,184,0)}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  .hero h1 .line>span{transform:none!important}
+  .fy-bars rect{transform:none!important}
+}
+/* ===== dropdown nav (multi-page) ===== */
+.nav-links{align-items:center;gap:2px}
+.nav-item{position:relative}
+.nav-item>a,.nav-item>button{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;color:var(--muted-d);background:none;border:0;font:inherit;cursor:pointer;padding:8px 10px;border-radius:9px;transition:color .2s,background .2s}
+.nav-item>a:hover,.nav-item>button:hover,.nav-item.open>button{color:#fff;background:rgba(116,180,232,.08)}
+.nav-item .caret{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .25s;opacity:.8}
+.nav-item.open .caret{transform:rotate(-135deg) translateY(2px)}
+.mega{position:absolute;top:calc(100% + 10px);left:0;min-width:300px;background:linear-gradient(165deg,rgba(16,50,83,.98),rgba(11,37,64,.99));border:1px solid var(--line-d);border-radius:16px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.45);backdrop-filter:blur(16px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s,transform .22s,visibility .22s}
+.nav-item.open .mega{opacity:1;visibility:visible;transform:none}
+.mega.cols2{min-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.mega .hub{grid-column:1/-1;display:flex;align-items:center;gap:8px;color:var(--mint);font-weight:700;font-size:14px;padding:11px 14px;margin-bottom:2px;border-radius:10px;border-bottom:1px solid var(--line-d)}
+.mega .hub:hover{background:rgba(116,180,232,.08)}.mega .hub i{font-style:normal;transition:transform .2s}.mega .hub:hover i{transform:translateX(3px)}
+.mega .mi{display:block;padding:11px 14px;border-radius:10px;transition:background .18s}
+.mega .mi:hover{background:rgba(116,180,232,.08)}
+.mega .mi .t{display:flex;align-items:center;gap:7px;color:#fff;font-weight:600;font-size:15px}
+.mega .mi .d{color:var(--muted-d);font-size:13px;margin-top:2px;line-height:1.4}
+.mega .mi.crown .t{color:var(--amber)}.mega .mi.crown .t::after{content:"♛";font-size:12px}
+.mega .soon{padding:11px 14px;opacity:.55}.mega .soon .t{color:var(--muted-d);font-weight:600;font-size:14px;font-style:italic}.mega .soon .d{color:var(--muted-d);font-size:12px;margin-top:2px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;flex-shrink:0}
+.burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}.burger.x span:nth-child(2){opacity:0}.burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.msheet{display:none;position:fixed;inset:0 0 0 auto;width:min(420px,86vw);z-index:60;background:linear-gradient(180deg,var(--deep),var(--deep2));transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);padding:84px 22px 32px;overflow-y:auto;box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+.msheet.show{display:block;transform:none;animation:msl .35s cubic-bezier(.4,0,.2,1)}@keyframes msl{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.mscrim{position:fixed;inset:0;background:rgba(6,24,44,.55);z-index:55;opacity:0;visibility:hidden;transition:.3s}.mscrim.show{opacity:1;visibility:visible}
+.macc{border-bottom:1px solid var(--line-d)}
+.macc>a,.macc>button{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:0;font:inherit;color:#fff;font-size:17px;font-weight:600;padding:16px 4px;cursor:pointer;text-align:left}
+.macc .caret{width:9px;height:9px;border-right:2px solid var(--muted-d);border-bottom:2px solid var(--muted-d);transform:rotate(45deg);transition:transform .25s}
+.macc.open .caret{transform:rotate(-135deg)}
+.macc .sub{max-height:0;overflow:hidden;transition:max-height .3s ease}.macc.open .sub{max-height:900px}
+.macc .sub a{display:block;color:var(--muted-d);font-size:15px;padding:11px 4px 11px 14px;border-left:2px solid var(--line-d);margin-left:4px}
+.macc .sub a:hover{color:var(--mint)}.macc .sub a.crown{color:var(--amber)}
+.mcta{display:block;text-align:center;background:var(--mint);color:var(--deep);font-weight:700;padding:15px;border-radius:12px;margin-top:24px;font-size:16px}
+@media(max-width:1240px){.nav-links{display:none!important}.burger{display:flex!important}}
+@media(min-width:1241px){.msheet,.mscrim{display:none}}
+/* hero Gold Standard badge */
+.gold-badge{position:absolute;top:-14px;right:24px;z-index:3;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#F0C46A,#E8A23C);color:#3a2606;font-weight:700;font-size:12.5px;padding:7px 14px;border-radius:999px;box-shadow:0 8px 22px rgba(232,162,60,.35)}
+
+/* ===================== ERP-OUTSTAFFING PAGE (injected) ===================== */
+/* ===================== INVOICING & AR PAGE ===================== */
+/* active nav */
+#nav .nav-links .nav-item a[aria-current],
+#nav .nav-links .nav-item button[aria-current]{color:var(--mint)}
+.mega .mi[aria-current]{background:rgba(116,180,232,.08)}
+.mega .mi[aria-current] .t{color:var(--mint)}
+
+/* shared buttons */
+.btn-dark{background:var(--deep);color:#fff}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 16px 38px -12px rgba(11,37,64,.55)}
+.btn-line{border:1.5px solid var(--line-l);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--teal);color:var(--teal-ink);transform:translateY(-2px)}
+
+/* section scaffold */
+.bk-sec{padding:clamp(64px,9vw,118px) 0;background:var(--bg);position:relative}
+.bk-sec.tint{background:linear-gradient(180deg,#EEF3F8,#E9EFF6)}
+.bk-head{max-width:780px;margin:0 0 clamp(40px,5vw,60px)}
+.bk-h2{font-weight:800;letter-spacing:-.03em;line-height:1.05;font-size:clamp(32px,5vw,58px);margin:18px 0 22px;color:var(--ink)}
+.bk-h2 .l2{color:var(--teal)}
+.bk-p{color:var(--muted);font-size:clamp(16px,1.9vw,19px);line-height:1.65;max-width:680px}
+
+/* ---------- HERO (single column) ---------- */
+.ia-hero{background:var(--bg);padding:clamp(120px,15vw,180px) 0 clamp(40px,6vw,64px)}
+.ia-hero-in{max-width:920px}
+.ia-hero h1{font-weight:800;letter-spacing:-.035em;line-height:1.0;font-size:clamp(44px,8vw,92px);margin:20px 0 30px;color:var(--ink)}
+.ia-hero h1 .l2{color:var(--teal)}
+.ia-hero .lead{color:var(--muted);font-size:clamp(17px,2.1vw,21px);line-height:1.55;max-width:660px;margin:0 0 16px}
+.ia-hero .sub{color:var(--ink);font-weight:600;font-size:clamp(15px,1.7vw,17px);margin:0 0 32px}
+.bk-hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+/* hero stat row */
+.ia-stats{display:grid;grid-template-columns:repeat(4,auto);gap:clamp(28px,5vw,64px);justify-content:start;margin-top:clamp(40px,6vw,64px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--line-l)}
+@media(max-width:760px){.ia-stats{grid-template-columns:1fr 1fr;gap:26px 40px}}
+.ia-stat b{display:block;color:var(--teal-ink);font-size:clamp(15px,1.8vw,17px);font-weight:700;letter-spacing:-.01em}
+.ia-stat span{display:block;color:var(--muted);font-size:14px;margin-top:5px}
+
+/* ---------- FIT ---------- */
+.bk-fit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,28px)}
+@media(max-width:840px){.bk-fit{grid-template-columns:1fr}}
+.bk-fit-col{background:#fff;border:1px solid var(--line-l);border-radius:22px;padding:clamp(24px,3vw,34px)}
+.bk-fit-h{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-bottom:18px;margin-bottom:8px;border-bottom:1px solid var(--line-l)}
+.bk-fit-h .fic{font-size:17px}
+.bk-fit-col.good .fic{color:var(--teal-ink)}
+.bk-fit-col.bad .fic{color:#B0817F}
+.bk-fit-col ul{list-style:none;margin:0;padding:0}
+.bk-fit-col li{position:relative;padding:13px 0 13px 30px;color:var(--ink);font-size:clamp(15px,1.7vw,16px);border-bottom:1px solid rgba(17,35,56,.05)}
+.bk-fit-col li:last-child{border-bottom:0}
+.bk-fit-col li::before{position:absolute;left:0;top:13px;font-weight:700}
+.bk-fit-col.good li::before{content:"⊕";color:var(--teal)}
+.bk-fit-col.bad li{color:var(--muted)}
+.bk-fit-col.bad li::before{content:"⊗";color:#C4A6A4}
+
+/* ---------- TMA DIFFERENCE (split + 4 cards) ---------- */
+.ia-diff{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(34px,5vw,70px);align-items:center}
+@media(max-width:900px){.ia-diff{grid-template-columns:1fr}}
+.ia-diff-cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,22px)}
+@media(max-width:520px){.ia-diff-cards{grid-template-columns:1fr}}
+.ia-dc{background:#fff;border:1px solid var(--line-l);border-radius:20px;padding:clamp(22px,2.6vw,30px);transition:transform .4s cubic-bezier(.2,.8,.3,1),box-shadow .4s,border-color .4s}
+.ia-dc:hover{transform:translateY(-4px);box-shadow:0 30px 70px -44px rgba(11,37,64,.5);border-color:var(--teal)}
+.ia-dc-k{font-size:clamp(22px,2.8vw,28px);font-weight:800;color:var(--teal);letter-spacing:-.02em;line-height:1}
+.ia-dc-t{font-size:15px;font-weight:700;color:var(--ink);margin:6px 0 12px}
+.ia-dc p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0}
+
+/* ---------- CARD GRIDS (problem / concerns) ---------- */
+.bk-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
+.bk-grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,24px)}
+@media(max-width:900px){.bk-grid3{grid-template-columns:1fr 1fr}.bk-grid2{grid-template-columns:1fr}}
+@media(max-width:620px){.bk-grid3{grid-template-columns:1fr}}
+.bk-card{position:relative;background:#fff;border:1px solid var(--line-l);border-radius:20px;padding:clamp(22px,2.6vw,30px);transition:transform .4s cubic-bezier(.2,.8,.3,1),box-shadow .4s,border-color .4s}
+.bk-card:hover{transform:translateY(-4px);box-shadow:0 30px 70px -44px rgba(11,37,64,.5)}
+.bk-card h3{font-size:clamp(16px,2vw,19px);font-weight:700;color:var(--ink);margin:18px 0 10px;letter-spacing:-.01em}
+.bk-card p{color:var(--muted);font-size:15px;line-height:1.55}
+.bk-card-ic{width:46px;height:46px;border-radius:12px;background:rgba(193,82,74,.1);color:#B5524A;display:flex;align-items:center;justify-content:center;font-size:20px}
+.bk-card-n{position:absolute;top:clamp(20px,2.4vw,28px);right:clamp(22px,2.6vw,30px);font-size:clamp(22px,3vw,30px);font-weight:800;color:#E2E8EF;letter-spacing:-.02em}
+
+/* ---------- DELIVERABLES (static, number on right) ---------- */
+.ia-deliv{display:flex;flex-direction:column;gap:14px}
+.ia-deliv-item{position:relative;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;background:#fff;border:1px solid var(--line-l);border-radius:18px;padding:clamp(22px,2.6vw,32px) clamp(60px,7vw,80px) clamp(22px,2.6vw,32px) clamp(22px,2.6vw,30px)}
+.ia-deliv-ic{width:44px;height:44px;border-radius:12px;background:rgba(30,111,184,.09);color:var(--teal-ink);display:flex;align-items:center;justify-content:center;font-size:19px}
+.ia-deliv-body h3{font-size:clamp(16px,2vw,19px);font-weight:700;color:var(--ink);margin:8px 0 10px;letter-spacing:-.01em}
+.ia-deliv-body p{color:var(--muted);font-size:clamp(15px,1.8vw,16px);line-height:1.55;margin:0 0 12px}
+.ia-deliv-out{color:#C77E1E;font-style:italic;font-weight:600;font-size:14.5px}
+.ia-deliv-n{position:absolute;top:clamp(22px,2.6vw,30px);right:clamp(22px,2.6vw,32px);font-size:clamp(26px,3.4vw,36px);font-weight:800;color:#E2E8EF;letter-spacing:-.02em;line-height:1}
+
+/* ---------- PROCESS (static expanded) ---------- */
+.ia-proc{display:flex;flex-direction:column;gap:14px}
+.ia-proc-item{display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,2.4vw,28px);background:#fff;border:1px solid var(--line-l);border-radius:18px;padding:clamp(24px,3vw,34px)}
+.ia-proc-n{font-size:clamp(26px,3.6vw,38px);font-weight:800;color:#C9D5E2;line-height:1;letter-spacing:-.02em}
+.ia-proc-b h3{font-size:clamp(16px,2vw,20px);font-weight:700;color:var(--ink);margin:4px 0 12px;letter-spacing:-.01em}
+.ia-proc-b p{color:var(--muted);font-size:clamp(15px,1.8vw,16px);line-height:1.6;margin:0 0 16px;max-width:760px}
+.ia-proc-pill{display:inline-block;font-size:13.5px;color:var(--teal-ink);background:#EDF3F9;border-radius:10px;padding:9px 15px}
+
+/* ---------- FAQ ---------- */
+.bk-faq-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,64px);align-items:start}
+@media(max-width:900px){.bk-faq-grid{grid-template-columns:1fr}}
+.bk-faq-cta{display:inline-block;margin-top:22px;font-weight:600;color:var(--teal-ink);font-size:16px}
+.bk-faq{display:flex;flex-direction:column;gap:12px}
+.bk-faq-item{background:#fff;border:1px solid var(--line-l);border-radius:14px;overflow:hidden}
+.bk-faq-q{width:100%;appearance:none;font:inherit;cursor:pointer;background:transparent;border:0;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:clamp(16px,2vw,21px) clamp(18px,2.2vw,24px);text-align:left;font-weight:600;color:var(--ink);font-size:clamp(15px,1.8vw,17px)}
+.bk-faq-chev{color:var(--muted);transition:transform .3s;flex-shrink:0}
+.bk-faq-item.open .bk-faq-chev{transform:rotate(180deg);color:var(--teal)}
+.bk-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 clamp(18px,2.2vw,24px)}
+.bk-faq-item.open .bk-faq-a{max-height:280px;padding:0 clamp(18px,2.2vw,24px) clamp(18px,2vw,22px)}
+.bk-faq-a p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+.bk-faq-a em{font-style:italic;color:#C77E1E;font-weight:600}
+
+/* ---------- COMMON CONCERNS ---------- */
+.bk-concern{background:#fff;border:1px solid var(--line-l);border-radius:18px;padding:clamp(22px,2.6vw,30px);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.bk-concern-ic{width:38px;height:38px;border-radius:50%;background:#EDF3F9;color:var(--teal-ink);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.bk-concern h3{font-size:clamp(15px,1.9vw,17px);font-weight:700;color:var(--ink);margin:6px 0 9px;letter-spacing:-.01em}
+.bk-concern p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0}
+
+/* ---------- GET STARTED + WHAT COMES NEXT (2 col) ---------- */
+.ia-cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.6vw,28px)}
+@media(max-width:880px){.ia-cta-grid{grid-template-columns:1fr}}
+.ia-panel{background:#fff;border:1px solid var(--line-l);border-radius:22px;padding:clamp(26px,3.2vw,40px)}
+.ia-panel.tint{background:linear-gradient(180deg,#EEF3F8,#E9EFF6)}
+.ia-panel .bk-h2{font-size:clamp(24px,3.2vw,36px)}
+.ia-panel h3{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:14px 0 14px}
+.ia-best{color:var(--ink);font-weight:600;font-size:15px;margin:16px 0 26px}
+.ia-next-list{display:flex;flex-direction:column;margin-top:8px}
+.ia-next-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:clamp(16px,2vw,20px) 0;border-bottom:1px solid var(--line-l)}
+.ia-next-row:last-child{border-bottom:0}
+.ia-next-row a{font-weight:600;color:var(--ink);font-size:clamp(15px,1.8vw,17px)}
+.ia-next-row.cur a{color:var(--teal-ink)}
+.ia-next-badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-l);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.ia-next-badge.cur{color:var(--teal-ink);background:#EDF3F9;border-color:transparent}
+
+/* ---------- CLIENT OUTCOMES ---------- */
+.bk-res{background:#fff;border:1px solid var(--line-l);border-radius:20px;padding:clamp(22px,2.6vw,30px);position:relative}
+.bk-res-q{position:absolute;top:clamp(22px,2.6vw,30px);right:clamp(22px,2.6vw,30px);color:#D8E1EC;font-size:26px;line-height:1}
+.bk-stars{color:var(--amber);letter-spacing:2px;font-size:15px}
+.bk-quote{color:var(--ink);font-size:clamp(15px,1.8vw,16.5px);line-height:1.6;font-style:italic;margin:14px 0 18px}
+.bk-res-src{font-weight:700;color:var(--teal-ink);font-size:15px}
+.bk-res-seg{color:var(--muted);font-size:13.5px;margin:3px 0 14px}
+.bk-res-out{color:var(--muted);font-size:14px;line-height:1.5;border-top:1px solid var(--line-l);padding-top:14px;margin:0}
+
+
+/* ===================== ERP-OUTSTAFFING (Systems & Partners) ADDITIONS ===================== */
+/* breadcrumb */
+.erp-bc{font-size:14px;color:var(--muted);margin-bottom:18px}
+.erp-bc a{color:var(--muted);text-decoration:none}
+.erp-bc a:hover{color:var(--teal-ink)}
+.erp-bc .sep{margin:0 8px;opacity:.6}
+.erp-bc .cur{color:var(--ink)}
+
+/* two-col hero */
+.erp-hero{background:var(--bg);padding:clamp(112px,13vw,160px) 0 0}
+.erp-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,5vw,64px);align-items:center}
+@media(max-width:980px){.erp-hero-grid{grid-template-columns:1fr}}
+.erp-hero-copy h1{font-weight:800;letter-spacing:-.035em;line-height:1.0;font-size:clamp(40px,6.2vw,76px);margin:18px 0 26px;color:var(--ink)}
+.erp-hero-copy h1 .l2{color:var(--teal)}
+.erp-hero-copy .lead{color:var(--muted);font-size:clamp(17px,2vw,20px);line-height:1.55;max-width:600px;margin:0 0 28px}
+.erp-hero-note{color:var(--muted);font-size:14px;margin:16px 0 0}
+/* supported ERP platforms pill card */
+.erp-supp{background:#fff;border:1px solid var(--line-l);border-radius:22px;padding:clamp(20px,2.6vw,28px);box-shadow:0 40px 90px -55px rgba(11,37,64,.45)}
+.erp-supp-lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.bkaas-receive{display:flex;flex-direction:column;gap:10px}
+.bkaas-row{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--line-l);border-radius:13px;padding:15px 18px}
+.bkaas-row-l{font-weight:600;color:var(--ink);font-size:15px}
+.bkaas-row-v{flex-shrink:0;color:var(--teal-ink);font-weight:600;font-size:13px}
+.aff-who{display:flex;flex-direction:column;gap:10px}
+.aff-who-row{display:flex;align-items:center;gap:12px;border:1px solid var(--line-l);border-radius:13px;padding:15px 18px;font-weight:600;color:var(--ink);font-size:15px}
+.aff-who-ck{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#EDF3F9;color:var(--teal);font-size:13px;font-weight:800}
+.bkaas-calc{background:#fff;border:1px solid var(--line-l);border-radius:24px;padding:clamp(22px,3vw,36px);box-shadow:0 40px 90px -60px rgba(11,37,64,.4)}
+.bkaas-calc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:clamp(22px,3vw,30px)}
+.bkaas-calc-title{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.bkaas-calc-sub{color:var(--muted);font-size:15px;margin-top:5px}
+.bkaas-calc-hero{text-align:right;flex-shrink:0}
+.bkaas-calc-hero-v{font-size:clamp(22px,2.8vw,28px);font-weight:800;color:var(--teal-ink)}
+.bkaas-calc-hero-l{color:var(--muted);font-size:13px}
+.bkaas-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.bkaas-tab{appearance:none;cursor:pointer;text-align:center;background:#F4F7FB;border:1px solid var(--line-l);border-radius:14px;padding:14px 12px;font:inherit;transition:border-color .2s,background .2s}
+.bkaas-tab b{display:block;color:var(--ink);font-size:14.5px;font-weight:700}
+.bkaas-tab span{display:block;color:var(--muted);font-size:12.5px;margin-top:3px}
+.bkaas-tab.active{background:#EDF3F9;border-color:var(--teal)}
+.bkaas-slider-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.bkaas-slider-lbl{font-weight:600;color:var(--ink);font-size:15px}
+.bkaas-slider-val{font-weight:800;color:var(--teal-ink);font-size:18px}
+.bkaas-range{width:100%;accent-color:var(--teal);margin-bottom:26px}
+.bkaas-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bkaas-res{background:#F4F7FB;border:1px solid var(--line-l);border-radius:14px;padding:18px;text-align:center}
+.bkaas-res b{display:block;font-size:clamp(20px,2.6vw,26px);font-weight:800;color:var(--ink)}
+.bkaas-res span{display:block;color:var(--muted);font-size:13px;margin-top:5px}
+@media(max-width:680px){.bkaas-tabs,.bkaas-results{grid-template-columns:1fr}}
+.aff-calc{background:#fff;border:1px solid var(--line-l);border-radius:24px;padding:clamp(22px,3vw,36px);box-shadow:0 40px 90px -60px rgba(11,37,64,.4)}
+.aff-calc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:clamp(22px,3vw,30px)}
+.aff-calc-title{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.aff-calc-sub{color:var(--muted);font-size:15px;margin-top:5px}
+.aff-calc-hero{text-align:right;flex-shrink:0}
+.aff-calc-hero-v{font-size:clamp(22px,2.8vw,28px);font-weight:800;color:var(--teal-ink)}
+.aff-calc-hero-l{color:var(--muted);font-size:13px}
+.aff-calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);align-items:start}
+.aff-slider-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.aff-slider-lbl{font-weight:600;color:var(--ink);font-size:15px}
+.aff-slider-val{font-weight:800;color:var(--teal-ink);font-size:17px}
+.aff-range{width:100%;accent-color:var(--teal);margin:0}
+.aff-note{margin-top:24px;background:#EDF3F9;border:1px solid var(--line-l);border-radius:14px;padding:16px 18px}
+.aff-note-t{font-weight:700;color:var(--teal-ink);font-size:14.5px;margin-bottom:4px}
+.aff-note-b{color:var(--muted);font-size:13.5px;line-height:1.5}
+.aff-calc-out{display:flex;flex-direction:column;gap:12px}
+.aff-res{display:flex;justify-content:space-between;align-items:center;gap:14px;background:#F4F7FB;border:1px solid var(--line-l);border-radius:14px;padding:20px 22px}
+.aff-res-l{color:var(--muted);font-size:15px}
+.aff-res-v{flex-shrink:0;font-size:clamp(18px,2.2vw,22px);font-weight:800;color:var(--ink)}
+@media(max-width:760px){.aff-calc-grid{grid-template-columns:1fr}}
+.erp-supp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.erp-supp-grid{grid-template-columns:1fr}}
+.erp-pill{display:flex;align-items:center;gap:12px;border:1px solid var(--line-l);border-radius:13px;padding:14px 16px;transition:border-color .2s,box-shadow .2s}
+.erp-pill:hover{border-color:var(--teal);box-shadow:0 10px 24px -18px rgba(11,37,64,.5)}
+.erp-pill-mark{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;color:#fff;flex-shrink:0}
+.erp-pill-name{font-size:15px;font-weight:600;color:var(--ink)}
+
+/* what's included — 6 borderless feature cards */
+.erp-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,52px) clamp(28px,4vw,56px)}
+@media(max-width:880px){.erp-feat{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.erp-feat{grid-template-columns:1fr}}
+.erp-feat-item .erp-feat-ic{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:20px;margin-bottom:18px}
+.erp-feat-item h3{font-size:clamp(17px,2vw,20px);font-weight:700;color:var(--ink);letter-spacing:-.01em;margin:0 0 10px}
+.erp-feat-item p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+
+/* how it works — 4 numbered bordered cards */
+.erp-how{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,22px)}
+@media(max-width:880px){.erp-how{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.erp-how{grid-template-columns:1fr}}
+.erp-how-card{background:#fff;border:1px solid var(--line-l);border-radius:18px;padding:clamp(22px,2.6vw,28px);transition:transform .35s,box-shadow .35s,border-color .35s}
+.erp-how-card:hover{transform:translateY(-4px);box-shadow:0 26px 60px -44px rgba(11,37,64,.4);border-color:var(--teal)}
+.erp-how-n{font-size:clamp(30px,4vw,40px);font-weight:800;color:#D4E0DC;letter-spacing:-.03em;line-height:1;margin-bottom:18px}
+.erp-how-card h3{font-size:clamp(16px,1.9vw,18.5px);font-weight:700;color:var(--ink);margin:0 0 10px;letter-spacing:-.01em}
+.erp-how-card p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}
+
+/* get started centered + other partnership options */
+.erp-get{text-align:center;max-width:720px;margin:0 auto}
+.erp-get .bk-h2{margin-left:auto;margin-right:auto}
+.erp-get .bk-p{margin-left:auto;margin-right:auto}
+.erp-get .bk-hero-ctas{justify-content:center}
+.erp-other{max-width:720px;margin:clamp(34px,5vw,52px) auto 0;padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--line-l);text-align:center}
+.erp-other-lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.erp-other-links{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+.erp-other-links a{color:var(--teal-ink);font-weight:600;font-size:15px;text-decoration:none}
+.erp-other-links a:hover{text-decoration:underline}
+
+/* platforms grid (shared with Gold Standard) */
+.rtf-plats{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,1.6vw,18px)}
+@media(max-width:980px){.rtf-plats{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:640px){.rtf-plats{grid-template-columns:repeat(2,1fr)}}
+.rtf-plat{background:#fff;border:1px solid var(--line-l);border-radius:18px;padding:clamp(18px,2.2vw,26px) 14px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
+.rtf-plat:hover{transform:translateY(-4px);box-shadow:0 24px 60px -44px rgba(11,37,64,.4);border-color:var(--teal)}
+.rtf-plat-mark{width:46px;height:46px;border-radius:13px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;letter-spacing:-.02em}
+.rtf-plat-name{font-size:14.5px;font-weight:700;color:var(--ink)}
+.rtf-plat-cat{font-size:12px;margin-top:6px}
+
+/* ---------- ERP MIGRATION PLAYBOOK ---------- */
+.erp-pb{background:#fff;border:1px solid var(--line-l);border-radius:24px;padding:clamp(22px,3vw,36px);box-shadow:0 40px 90px -60px rgba(11,37,64,.4)}
+.erp-pb-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:clamp(26px,3.5vw,38px)}
+.erp-pb-title{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.erp-pb-sub{color:var(--muted);font-size:15px;margin-top:5px}
+.erp-pb-weeks{flex-shrink:0;font-size:13px;font-weight:700;color:var(--teal-ink);background:#EDF3F9;border-radius:999px;padding:7px 14px}
+/* stepper */
+.erp-step{display:flex;align-items:flex-start;margin-bottom:clamp(24px,3vw,32px)}
+.erp-step-node{display:flex;flex-direction:column;align-items:center;text-align:center;flex:0 0 auto;width:96px;cursor:pointer}
+.erp-step-dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;border:2px solid var(--line-l);background:#fff;color:var(--muted);transition:background .2s,border-color .2s,color .2s}
+.erp-step-node.done .erp-step-dot{background:#1E6FB8;border-color:#1E6FB8;color:#fff}
+.erp-step-node.active .erp-step-dot{background:var(--teal);border-color:var(--teal);color:#fff}
+.erp-step-lbl{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.25;max-width:90px}
+.erp-step-node.active .erp-step-lbl{color:var(--ink);font-weight:600}
+.erp-step-bar{flex:1 1 auto;height:2px;background:var(--line-l);margin-top:17px;min-width:18px}
+.erp-step-bar.done{background:#1E6FB8}
+@media(max-width:680px){.erp-step{display:none}}
+/* accordion phases */
+.erp-ph{border:1px solid var(--line-l);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.erp-ph.open{border-color:var(--teal)}
+.erp-ph-q{width:100%;appearance:none;font:inherit;cursor:pointer;background:#fff;border:0;display:flex;align-items:center;gap:12px;padding:18px 20px;text-align:left}
+.erp-ph-ic{color:#1E6FB8;font-size:16px;flex-shrink:0}
+.erp-ph.todo .erp-ph-ic{color:#C6D2DC}
+.erp-ph.open .erp-ph-ic{color:var(--teal)}
+.erp-ph-t{font-weight:700;color:var(--ink);font-size:clamp(15px,1.8vw,17px)}
+.erp-ph-wk{color:var(--muted);font-size:13.5px;margin-left:6px;font-weight:400}
+.erp-ph-chev{margin-left:auto;color:var(--muted);transition:transform .25s}
+.erp-ph.open .erp-ph-chev{transform:rotate(180deg)}
+.erp-ph-body{display:none;padding:4px 20px 22px}
+.erp-ph.open .erp-ph-body{display:block}
+.erp-ph-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(20px,3vw,40px)}
+@media(max-width:760px){.erp-ph-cols{grid-template-columns:1fr}}
+.erp-ph-h{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.erp-ph-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.erp-ph-list li{font-size:14px;line-height:1.45;color:var(--ink);display:flex;gap:9px}
+.erp-ph-list li::before{content:"\2713";color:#1E6FB8;font-weight:700;flex-shrink:0}
+.erp-ph-list.risk li::before{content:"\26A0";color:#C7912E}
+.erp-ph-role{font-size:14px;line-height:1.6;color:var(--muted)}
+
+/* === mobile nav compaction (Misha fix) === */
+@media(max-width:600px){
+.nav-in{gap:10px;padding:11px 16px}
+.logo{font-size:16px;gap:8px;white-space:nowrap}
+.logo .mark{width:26px}
+.nav-cta{padding:9px 14px;font-size:13.5px}
+.burger{padding:6px}
+}
+@media(max-width:560px){.foot-col a{padding:10px 0}.bk-faq-cta{padding:11px 0}}/*MTAP*/</style>
+</head>
+<body>
+
+
+<div id="sprog" aria-hidden="true"></div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a class="logo" href="https://frolicking-granita-7a438a.netlify.app/"><svg class="mark" id="navMark" viewBox="0 0 102 102"><rect class="cube" x="35" y="1" width="30" height="30" rx="8" fill="currentColor"/><path class="cube" d="M77,1 h8 l16,16 v6 a8,8 0 0 1 -8,8 H77 a8,8 0 0 1 -8,-8 V9 a8,8 0 0 1 8,-8 Z" fill="currentColor"/><path class="fold" d="M85,1 l16,16 h-10 a6,6 0 0 1 -6,-6 Z" fill="currentColor"/><rect class="cube" x="1" y="35" width="30" height="30" rx="8" fill="currentColor"/><rect class="cube" x="35" y="35" width="30" height="30" rx="8" fill="currentColor"/><rect class="cube" x="69" y="35" width="30" height="30" rx="8" fill="currentColor"/><rect class="cube" x="35" y="69" width="30" height="30" rx="8" fill="currentColor"/></svg>TMA Finance</a>
+    <div class="nav-links">
+      <div class="nav-item"><a href="https://frolicking-granita-7a438a.netlify.app/our-approach">Our Approach</a></div>
+      <div class="nav-item" data-menu>
+        <button aria-haspopup="true" aria-expanded="false">Core Services <span class="caret"></span></button>
+        <div class="mega">
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/finance-services/bookkeeping"><span class="t">Bookkeeping &amp; Controllership</span><span class="d">Clean books + controller oversight, built in from day one</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/finance-services/invoicing-ar"><span class="t">Invoicing &amp; AR</span><span class="d">Revenue operations</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/finance-services/accounts-payable"><span class="t">Accounts Payable</span><span class="d">Payables &amp; cash control</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/finance-services/reporting-kpi"><span class="t">Reporting &amp; KPI Control</span><span class="d">Financial intelligence</span></a>
+          <a class="mi crown" href="https://frolicking-granita-7a438a.netlify.app/finance-services/real-time-finance"><span class="t">Gold Standard</span><span class="d">Full integration</span></a>
+        </div>
+      </div>
+      <div class="nav-item" data-menu>
+        <button aria-haspopup="true" aria-expanded="false">Strategic Add-Ons <span class="caret"></span></button>
+        <div class="mega cols2">
+          <a class="hub" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons">All Strategic Add-Ons <i>→</i></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/budgeting-forecasting"><span class="t">Budgeting &amp; Forecasting</span><span class="d">Annual budgets &amp; rolling forecasts</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/cash-flow-planning"><span class="t">Cash Flow Planning</span><span class="d">13-week cash flow model</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/profitability-analysis"><span class="t">Profitability Analysis</span><span class="d">Margin by product, channel &amp; customer</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/management-reporting"><span class="t">Management Reporting</span><span class="d">Monthly pack for operators</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/kpi-design-tracking"><span class="t">KPI Design &amp; Tracking</span><span class="d">Metrics that drive decisions</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/scenario-planning"><span class="t">Scenario Planning</span><span class="d">Model the future before it happens</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/financial-modeling"><span class="t">Financial Modeling</span><span class="d">Custom models for complex decisions</span></a>
+          <a class="mi crown" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/strategic-advisory"><span class="t">Strategic Finance Advisory</span><span class="d">Controller-led strategic guidance</span></a>
+          <div class="soon"><span class="t">More coming soon…</span><span class="d">New add-ons in development</span></div>
+        </div>
+      </div>
+      <div class="nav-item" data-menu>
+        <button aria-haspopup="true" aria-expanded="false">Industries <span class="caret"></span></button>
+        <div class="mega cols2">
+          <a class="hub" href="https://frolicking-granita-7a438a.netlify.app/industries">All Industries <i>→</i></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/industries/ecommerce"><span class="t">eCommerce</span><span class="d">Shopify, Amazon, DTC brands</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/industries/real-estate"><span class="t">Real Estate</span><span class="d">Investors, operators, developers</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/industries/b2b-services"><span class="t">B2B Services</span><span class="d">Agencies, consultancies, SaaS</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/industries/manufacturing"><span class="t">Manufacturing</span><span class="d">Product &amp; inventory businesses</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/industries/agencies-service"><span class="t">Agencies &amp; Service</span><span class="d">Creative &amp; professional services</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/industries/multi-entity"><span class="t">Multi-Entity</span><span class="d">Holding companies &amp; portfolios</span></a>
+        </div>
+      </div>
+      <div class="nav-item" data-menu>
+        <button aria-haspopup="true" aria-expanded="false" aria-current="page">Systems &amp; Partners <span class="caret"></span></button>
+        <div class="mega">
+          <a class="hub" href="https://frolicking-granita-7a438a.netlify.app/systems-partners">All Systems &amp; Partners <i>→</i></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/systems-partners/erp-outstaffing"><span class="t">ERP-Specific Outstaffing</span><span class="d">NetSuite, SAP, Dynamics specialists</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/systems-partners/bkaas-cpa"><span class="t">BKaaS for CPA Firms</span><span class="d">White-label bookkeeping for CPAs</span></a>
+          <a class="mi" href="https://frolicking-granita-7a438a.netlify.app/systems-partners/affiliate" aria-current="page"><span class="t">Affiliate Partnerships</span><span class="d">Refer clients, earn revenue</span></a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="https://frolicking-granita-7a438a.netlify.app/pricing">Pricing</a></div>
+      <div class="nav-item"><a href="https://frolicking-granita-7a438a.netlify.app/case-studies">Case Studies</a></div>
+    </div>
+    <a class="nav-cta" href="https://frolicking-granita-7a438a.netlify.app/book-a-call">Book a Call →</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mscrim" id="mscrim"></div>
+<aside class="msheet" id="msheet" aria-label="Mobile menu">
+  <div class="macc"><a href="https://frolicking-granita-7a438a.netlify.app/our-approach">Our Approach</a></div>
+  <div class="macc"><button aria-expanded="false">Core Services <span class="caret"></span></button><div class="sub">
+    <a href="https://frolicking-granita-7a438a.netlify.app/finance-services/bookkeeping">Bookkeeping &amp; Controllership</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/finance-services/invoicing-ar">Invoicing &amp; AR</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/finance-services/accounts-payable">Accounts Payable</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/finance-services/reporting-kpi">Reporting &amp; KPI Control</a>
+    <a class="crown" href="https://frolicking-granita-7a438a.netlify.app/finance-services/real-time-finance">Gold Standard ♛</a></div></div>
+  <div class="macc"><button aria-expanded="false">Strategic Add-Ons <span class="caret"></span></button><div class="sub">
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons">All Strategic Add-Ons →</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/budgeting-forecasting">Budgeting &amp; Forecasting</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/cash-flow-planning">Cash Flow Planning</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/profitability-analysis">Profitability Analysis</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/management-reporting">Management Reporting</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/kpi-design-tracking">KPI Design &amp; Tracking</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/scenario-planning">Scenario Planning</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/financial-modeling">Financial Modeling</a>
+    <a class="crown" href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/strategic-advisory">Strategic Finance Advisory ♛</a></div></div>
+  <div class="macc"><button aria-expanded="false">Industries <span class="caret"></span></button><div class="sub">
+    <a href="https://frolicking-granita-7a438a.netlify.app/industries">All Industries →</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/industries/ecommerce">eCommerce</a><a href="https://frolicking-granita-7a438a.netlify.app/industries/real-estate">Real Estate</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/industries/b2b-services">B2B Services</a><a href="https://frolicking-granita-7a438a.netlify.app/industries/manufacturing">Manufacturing</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/industries/agencies-service">Agencies &amp; Service</a><a href="https://frolicking-granita-7a438a.netlify.app/industries/multi-entity">Multi-Entity</a></div></div>
+  <div class="macc"><button aria-expanded="false">Systems &amp; Partners <span class="caret"></span></button><div class="sub">
+    <a href="https://frolicking-granita-7a438a.netlify.app/systems-partners">All Systems &amp; Partners →</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/systems-partners/erp-outstaffing">ERP-Specific Outstaffing</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/systems-partners/bkaas-cpa">BKaaS for CPA Firms</a>
+    <a href="https://frolicking-granita-7a438a.netlify.app/systems-partners/affiliate" aria-current="page">Affiliate Partnerships</a></div></div>
+  <div class="macc"><a href="https://frolicking-granita-7a438a.netlify.app/pricing">Pricing</a></div>
+  <div class="macc"><a href="https://frolicking-granita-7a438a.netlify.app/case-studies">Case Studies</a></div>
+  <a class="mcta" href="https://frolicking-granita-7a438a.netlify.app/book-a-call">Book a Call →</a>
+</aside>
+
+<!-- ===== AFFILIATE PARTNERSHIPS PAGE BODY ===== -->
+
+<!-- HERO (two-column: copy + supported platforms) -->
+<header class="erp-hero">
+  <div class="wrap">
+    <div class="erp-bc rv"><a href="https://frolicking-granita-7a438a.netlify.app/systems-partners">Systems &amp; Partnerships</a><span class="sep">›</span><span class="cur">Affiliate Partnerships</span></div>
+    <div class="erp-hero-grid">
+      <div class="erp-hero-copy rv">
+        <div class="eyebrow">Affiliate Program</div>
+        <h1>Refer clients.<br>Earn every month.<br><span class="l2">No involvement required.</span></h1>
+        <p class="lead">TMA's affiliate program is built for advisors, coaches, consultants, and service providers whose clients need a finance team. You make the introduction. We handle everything else. You earn a recurring commission for as long as the client stays.</p>
+        <div class="bk-hero-ctas"><a class="btn btn-dark" href="https://frolicking-granita-7a438a.netlify.app/book-a-call">Apply to the Program <i>→</i></a></div>
+        <p class="erp-hero-note">Recurring commissions. No minimums. No client management.</p>
+      </div>
+      <div class="rv">
+        <div class="erp-supp">
+          <div class="erp-supp-lbl">Who joins the program</div>
+          <div class="aff-who">
+            <div class="aff-who-row"><span class="aff-who-ck" aria-hidden="true">✓</span>Business coaches &amp; advisors</div>
+            <div class="aff-who-row"><span class="aff-who-ck" aria-hidden="true">✓</span>Finance consultants &amp; advisory firms</div>
+            <div class="aff-who-row"><span class="aff-who-ck" aria-hidden="true">✓</span>Marketing &amp; growth agencies</div>
+            <div class="aff-who-row"><span class="aff-who-ck" aria-hidden="true">✓</span>ERP &amp; software consultants</div>
+            <div class="aff-who-row"><span class="aff-who-ck" aria-hidden="true">✓</span>Business attorneys &amp; CPAs</div>
+            <div class="aff-who-row"><span class="aff-who-ck" aria-hidden="true">✓</span>Startup ecosystem players</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STAT ROW -->
+<section class="bk-sec" style="padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)">
+  <div class="wrap">
+    <div class="ia-stats rv">
+      <div class="ia-stat"><b>Recurring</b><span>Commission Model</span></div>
+      <div class="ia-stat"><b>90 days</b><span>Referral Window</span></div>
+      <div class="ia-stat"><b>No min.</b><span>Referral Minimum</span></div>
+      <div class="ia-stat"><b>48 hrs</b><span>Application Review</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED — 6 feature cards -->
+<section class="bk-sec tint">
+  <div class="wrap">
+    <div class="bk-head rv"><div class="eyebrow">Program benefits</div></div>
+    <div class="erp-feat rv">
+      <div class="erp-feat-item"><div class="erp-feat-ic">$</div><h3>Recurring Commission</h3><p>Earn a commission every month your referred client stays with TMA — not just a one-time payout.</p></div>
+      <div class="erp-feat-item"><div class="erp-feat-ic">↻</div><h3>Transparent Tracking</h3><p>A dedicated partner dashboard shows your referrals, active clients, and commission status — always up to date.</p></div>
+      <div class="erp-feat-item"><div class="erp-feat-ic">⛨</div><h3>No Operational Involvement</h3><p>You refer. TMA handles everything else. No client management, no deliverables, no support tickets.</p></div>
+      <div class="erp-feat-item"><div class="erp-feat-ic">⧉</div><h3>Dedicated Partner Manager</h3><p>A TMA partner manager is assigned to you — available for questions, co-selling support, and updates.</p></div>
+      <div class="erp-feat-item"><div class="erp-feat-ic">↗</div><h3>Marketing Support</h3><p>Co-branded materials, referral links, and talking points to make it easy to introduce TMA to your network.</p></div>
+      <div class="erp-feat-item"><div class="erp-feat-ic">$</div><h3>No Minimum Referrals</h3><p>Refer one client or fifty. The program works at any scale — no quotas, no minimums, no pressure.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS — 4 numbered cards -->
+<section class="bk-sec">
+  <div class="wrap">
+    <div class="bk-head rv"><div class="eyebrow">How it works</div></div>
+    <div class="erp-how rv">
+      <div class="erp-how-card"><div class="erp-how-n">01</div><h3>Apply to the Program</h3><p>Fill out a short application. We review your profile and confirm fit within 48 hours.</p></div>
+      <div class="erp-how-card"><div class="erp-how-n">02</div><h3>Get Your Partner Link</h3><p>You receive a unique referral link, co-branded materials, and access to your partner dashboard.</p></div>
+      <div class="erp-how-card"><div class="erp-how-n">03</div><h3>Refer Your Network</h3><p>Introduce TMA to clients, colleagues, or your audience. We handle the sales conversation from there.</p></div>
+      <div class="erp-how-card"><div class="erp-how-n">04</div><h3>Earn Monthly</h3><p>Once a referred client signs, you earn a recurring monthly commission for the lifetime of the engagement.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bk-sec tint">
+  <div class="wrap bk-faq-grid">
+    <div class="rv">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="bk-h2">Questions about<br>the program</h2>
+      <a class="bk-faq-cta" href="https://frolicking-granita-7a438a.netlify.app/book-a-call">Still have questions? Book a Call <i>→</i></a>
+    </div>
+    <div class="bk-faq rv" id="erpFaq">
+      <!-- PLACEHOLDER: ответы FAQ свёрнуты на источнике — заглушки. Вопросы 1:1 (видно 3 на скрине).
+           ФЛАГ: между FAQ и калькулятором на скринах разрыв — возможны доп. вопросы FAQ (q4+), в кадр не попали. -->
+      <div class="bk-faq-item"><button class="bk-faq-q">How much is the commission?<span class="bk-faq-chev" aria-hidden="true">⌄</span></button><div class="bk-faq-a"><p>You earn a recurring 10% of the client's monthly fee for as long as they stay with TMA — no cap, no expiry. <em>[заглушка]</em></p></div></div>
+      <div class="bk-faq-item"><button class="bk-faq-q">When do I get paid?<span class="bk-faq-chev" aria-hidden="true">⌄</span></button><div class="bk-faq-a"><p>Commissions are paid out on a recurring monthly basis once your referred client is active and billing. <em>[заглушка]</em></p></div></div>
+      <div class="bk-faq-item"><button class="bk-faq-q">What if my referral doesn't convert immediately?<span class="bk-faq-chev" aria-hidden="true">⌄</span></button><div class="bk-faq-a"><p>Referrals are tracked within a 90-day window, so you're credited even if the client signs later in that period. <em>[заглушка]</em></p></div></div>
+    </div>
+  </div>
+</section>
+<!-- ФЛАГ: секции get-started + Other Partnership Options здесь НЕТ (на скринах калькулятор идёт сразу после FAQ),
+     тогда как у erp-outstaffing и bkaas-cpa она есть. Если на источнике она всё же присутствует в разрыве скринов — добавить. -->
+
+<!-- AFFILIATE EARNINGS CALCULATOR (interactive) -->
+<section class="bk-sec" id="aff-calc-sec">
+  <div class="wrap">
+    <div class="aff-calc rv" id="affCalc">
+      <div class="aff-calc-head">
+        <div><div class="aff-calc-title">Affiliate Earnings Calculator</div><div class="aff-calc-sub">Estimate your recurring commission from referring clients to TMA</div></div>
+        <div class="aff-calc-hero"><div class="aff-calc-hero-v" id="affHeroV">$16K/yr</div><div class="aff-calc-hero-l">Estimated annual earnings</div></div>
+      </div>
+      <div class="aff-calc-grid">
+        <div class="aff-calc-inputs">
+          <div class="aff-slider-row"><span class="aff-slider-lbl">Referrals per Month</span><span class="aff-slider-val" id="affRefV">3</span></div>
+          <input type="range" id="affRef" class="aff-range" min="1" max="20" value="3" step="1" aria-label="Referrals per Month">
+          <div class="aff-slider-row" style="margin-top:22px"><span class="aff-slider-lbl">Average Monthly Deal Size</span><span class="aff-slider-val" id="affDealV">$5K/mo</span></div>
+          <input type="range" id="affDeal" class="aff-range" min="1000" max="20000" value="5000" step="1000" aria-label="Average Monthly Deal Size">
+          <div class="aff-note">
+            <div class="aff-note-t">10% recurring commission</div>
+            <div class="aff-note-b">You earn 10% of the monthly fee for as long as the client stays with TMA. No cap, no expiry.</div>
+          </div>
+        </div>
+        <div class="aff-calc-out">
+          <div class="aff-res"><span class="aff-res-l">Monthly commission</span><span class="aff-res-v" id="affMonthly">$1K</span></div>
+          <div class="aff-res"><span class="aff-res-l">Annual commission</span><span class="aff-res-v" id="affAnnual">$16K</span></div>
+          <div class="aff-res"><span class="aff-res-l">5-year lifetime value</span><span class="aff-res-v" id="affFive">$81K</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT OUTCOMES -->
+<section class="bk-sec tint">
+  <div class="wrap">
+    <div class="bk-head rv"><div class="eyebrow">Client outcomes</div><h2 class="bk-h2">Partners who trust TMA.</h2></div>
+    <div class="bk-grid3">
+      <div class="bk-res rv"><span class="bk-res-q" aria-hidden="true">”</span><div class="bk-stars" aria-hidden="true">★★★★★</div>
+        <p class="bk-quote">"We smoothly transitioned from cash-method accounting to GAAP accrual basis, significantly improving our insight into business operations through detailed financial statements."</p>
+        <div class="bk-res-src">opportuniteas.com</div><div class="bk-res-seg">eCommerce / DTC</div>
+        <p class="bk-res-out">Monthly financials on a consistent cadence. Full accrual basis. Management-ready P&amp;L.</p></div>
+      <div class="bk-res rv"><span class="bk-res-q" aria-hidden="true">”</span><div class="bk-stars" aria-hidden="true">★★★★★</div>
+        <p class="bk-quote">"TMA completely restructured our chart of accounts and gave us a reporting package we can actually use to run the business. Night and day difference."</p>
+        <div class="bk-res-src">Multi-entity operator</div><div class="bk-res-seg">Multi-Entity</div>
+        <p class="bk-res-out">Consolidated reporting across 4 entities. Clean intercompany eliminations.</p></div>
+      <div class="bk-res rv"><span class="bk-res-q" aria-hidden="true">”</span><div class="bk-stars" aria-hidden="true">★★★★★</div>
+        <p class="bk-quote">"We were drowning in spreadsheets before TMA. Now we have a real finance function — budgets, forecasts, and a close cadence that actually works."</p>
+        <div class="bk-res-src">Manufacturing client</div><div class="bk-res-seg">Manufacturing</div>
+        <p class="bk-res-out">Budget vs. actuals reporting live. Cash flow model built. Close process running smoothly.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="mark" viewBox="0 0 102 102"><rect class="cube" x="35" y="1" width="30" height="30" rx="8" fill="currentColor"/><path class="cube" d="M77,1 h8 l16,16 v6 a8,8 0 0 1 -8,8 H77 a8,8 0 0 1 -8,-8 V9 a8,8 0 0 1 8,-8 Z" fill="currentColor"/><path class="fold" d="M85,1 l16,16 h-10 a6,6 0 0 1 -6,-6 Z" fill="currentColor"/><rect class="cube" x="1" y="35" width="30" height="30" rx="8" fill="currentColor"/><rect class="cube" x="35" y="35" width="30" height="30" rx="8" fill="currentColor"/><rect class="cube" x="69" y="35" width="30" height="30" rx="8" fill="currentColor"/><rect class="cube" x="35" y="69" width="30" height="30" rx="8" fill="currentColor"/></svg>
+        <p>Controller-led finance services for growing businesses that need more than a bookkeeper — and more than a generalist advisor.</p>
+        <a class="btn btn-mint" style="padding:12px 22px;font-size:15px" href="https://frolicking-granita-7a438a.netlify.app/book-a-call">Book a Call <i>→</i></a>
+      </div>
+      <div class="foot-col"><b>Core Services</b><a href="https://frolicking-granita-7a438a.netlify.app/finance-services/bookkeeping">Bookkeeping &amp; Controllership</a><a href="https://frolicking-granita-7a438a.netlify.app/finance-services/invoicing-ar">Invoicing &amp; AR</a><a href="https://frolicking-granita-7a438a.netlify.app/finance-services/accounts-payable">Accounts Payable</a><a href="https://frolicking-granita-7a438a.netlify.app/finance-services/reporting-kpi">Reporting &amp; KPI</a><a href="https://frolicking-granita-7a438a.netlify.app/finance-services/real-time-finance">Gold Standard</a></div>
+      <div class="foot-col"><b>Strategic Add-Ons</b><a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons">All Add-Ons</a><a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/budgeting-forecasting">Budgeting &amp; Forecasting</a><a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/cash-flow-planning">Cash Flow Planning</a><a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/profitability-analysis">Profitability Analysis</a><a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/kpi-design-tracking">KPI Design &amp; Tracking</a><a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/financial-modeling">Financial Modeling</a><a href="https://frolicking-granita-7a438a.netlify.app/strategic-add-ons/strategic-advisory">Strategic Advisory</a></div>
+      <div class="foot-col"><b>Company</b><a href="https://frolicking-granita-7a438a.netlify.app/our-approach">Our Approach</a><a href="https://frolicking-granita-7a438a.netlify.app/case-studies">Case Studies</a><a href="https://frolicking-granita-7a438a.netlify.app/pricing">Pricing</a><a href="https://frolicking-granita-7a438a.netlify.app/industries">Industries</a><a href="https://frolicking-granita-7a438a.netlify.app/systems-partners">Partnerships</a><a href="https://frolicking-granita-7a438a.netlify.app/book-a-call">Book a Call</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 TMA Finance. All rights reserved.</span><span><a href="https://frolicking-granita-7a438a.netlify.app/pricing">Pricing</a> · <a href="https://frolicking-granita-7a438a.netlify.app/our-approach">Our Approach</a> · <a href="https://frolicking-granita-7a438a.netlify.app/book-a-call">Book a Call →</a></span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* прелоадер убран при миграции страницы — контент показываем сразу */
+document.body.classList.add('loaded');
+
+
+/* идл-волна кубиков лого каждые 6 сек */
+if (!reduced){
+  setInterval(()=>{
+    const m = document.getElementById('navMark');
+    m.classList.add('wave'); setTimeout(()=>m.classList.remove('wave'), 1300);
+  }, 6000);
+}
+
+/* тилт дашборда за мышью */
+if (!reduced && window.matchMedia('(pointer:fine)').matches){
+  const dw = document.querySelector('.dash');
+  const dwrap = document.querySelector('.dash-wrap');
+  if (dw && dwrap){
+  dwrap.addEventListener('mousemove', e=>{
+    const r = dw.getBoundingClientRect();
+    const px = (e.clientX-r.left)/r.width-.5, py = (e.clientY-r.top)/r.height-.5;
+    dw.style.transform = `perspective(900px) rotateX(${py*-5}deg) rotateY(${px*5}deg)`;
+  });
+  dwrap.addEventListener('mouseleave', ()=>{ dw.style.transform=''; });
+  }
+
+  /* тилт + spotlight на карточках */
+  document.querySelectorAll('.area,.why-card,.up-q,.t-sm,.proc,.ind').forEach(card=>{
+    card.addEventListener('mousemove', e=>{
+      if (!card.classList.contains('in')) return;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX-r.left)/r.width, py = (e.clientY-r.top)/r.height;
+      card.style.setProperty('--mx', px*100+'%'); card.style.setProperty('--my', py*100+'%');
+      card.style.transition = 'transform .12s ease-out';
+      card.style.transform = `perspective(900px) rotateX(${(py-.5)*-4}deg) rotateY(${(px-.5)*4}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', ()=>{
+      card.style.transition = 'transform .45s cubic-bezier(.2,.8,.3,1)'; card.style.transform = '';
+    });
+  });
+
+  /* магнитные кнопки */
+  document.querySelectorAll('.btn,.nav-cta').forEach(el=>{
+    el.addEventListener('mousemove', e=>{
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX-(r.left+r.width/2), dy = e.clientY-(r.top+r.height/2);
+      el.style.transition='transform .1s ease-out';
+      el.style.transform=`translate(${dx*.15}px,${dy*.28}px)`;
+    });
+    el.addEventListener('mouseleave', ()=>{
+      el.style.transition='transform .4s cubic-bezier(.2,.8,.3,1.3)'; el.style.transform='';
+    });
+  });
+}
+
+/* лёгкий параллакс дашборда при скролле */
+if (!reduced && window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.to('.dash-wrap', {y:-36, ease:'none',
+    scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+  /* линия процесса рисуется по мере прохождения шагов */
+  gsap.to('.proc-rail i', {height:'100%', ease:'none',
+    scrollTrigger:{trigger:'.proc-list', start:'top 72%', end:'bottom 60%', scrub:true}});
+  document.querySelectorAll('.proc').forEach(p=>{
+    ScrollTrigger.create({trigger:p, start:'top 64%',
+      onEnter:()=>p.classList.add('on'), onLeaveBack:()=>p.classList.remove('on')});
+  });
+}
+
+/* nav border */
+window.addEventListener('scroll', ()=>{
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  const h = document.documentElement;
+  document.getElementById('sprog').style.transform =
+    'scaleX(' + (h.scrollTop/(h.scrollHeight-h.clientHeight||1)) + ')';
+},{passive:true});
+
+/* reveals */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* count-up */
+function fmt(n, dec){ return dec ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US'); }
+function finalCounts(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    el.textContent = (el.dataset.prefix||'') + fmt(parseFloat(el.dataset.count), +el.dataset.dec||0) + (el.dataset.suffix||'');
+  });
+}
+if (reduced){ finalCounts(); }
+else if (window.gsap) {
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const target = parseFloat(el.dataset.count), dec = +el.dataset.dec||0;
+    const obj = {v:0};
+    gsap.to(obj, {v:target, duration:1.5, ease:'power2.out',
+      scrollTrigger:{trigger:el, start:'top 88%'},
+      onUpdate(){ el.textContent = (el.dataset.prefix||'') + fmt(obj.v, dec) + (el.dataset.suffix||''); }});
+  });
+  /* FY-бары растут со stagger */
+  ScrollTrigger.create({trigger:'.fy-chart', start:'top 80%', once:true,
+    onEnter:()=> gsap.to('.fy-bars rect', {scaleY:1, stagger:.035, duration:.55, ease:'power2.out'})});
+  /* spotlight на индустриях */
+  document.querySelectorAll('.ind').forEach(card=>{
+    card.addEventListener('mousemove', e=>{
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');
+    });
+  });
+}
+else { finalCounts(); }
+
+/* comparison slider — updates revenue label only (figures are benchmark estimates) */
+const cmpRev = document.getElementById('cmpRev'), cmpRevV = document.getElementById('cmpRevV');
+if (cmpRev){
+  cmpRev.addEventListener('input', ()=>{
+    const v = +cmpRev.value;
+    cmpRevV.textContent = '$' + (v/1e6).toFixed(v < 1e6 ? 2 : 1).replace(/\.0$/,'') + 'M';
+  });
+}
+
+/* dropdown nav: hover + click + keyboard */
+document.querySelectorAll('.nav-item[data-menu]').forEach(item=>{
+  const btn = item.querySelector('button');
+  const open = v => { item.classList.toggle('open', v); btn.setAttribute('aria-expanded', v); };
+  item.addEventListener('mouseenter', ()=>open(true));
+  item.addEventListener('mouseleave', ()=>open(false));
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    const n = !item.classList.contains('open');
+    document.querySelectorAll('.nav-item.open').forEach(o=>{ if(o!==item){ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); } });
+    open(n);
+  });
+});
+document.addEventListener('click', ()=>document.querySelectorAll('.nav-item.open').forEach(o=>{ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); }));
+
+/* mobile sheet */
+const burger = document.getElementById('burger'), sheet = document.getElementById('msheet'), scrim = document.getElementById('mscrim');
+function openSheet(){ sheet.classList.add('show'); scrim.classList.add('show'); burger.classList.add('x'); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeSheet(){ sheet.classList.remove('show'); scrim.classList.remove('show'); burger.classList.remove('x'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+if (burger){
+  burger.addEventListener('click', ()=> burger.classList.contains('x') ? closeSheet() : openSheet());
+  scrim.addEventListener('click', closeSheet);
+  document.querySelectorAll('.macc>button').forEach(b=>b.addEventListener('click', ()=>{
+    const a = b.parentElement, w = a.classList.contains('open');
+    a.classList.toggle('open', !w); b.setAttribute('aria-expanded', !w);
+  }));
+}
+document.addEventListener('keydown', e=>{
+  if (e.key==='Escape'){
+    document.querySelectorAll('.nav-item.open').forEach(o=>{ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); });
+    closeSheet();
+  }
+});
+
+/* ===== erp-outstaffing page JS (injected) ===== */
+/* ===== ERP-SPECIFIC OUTSTAFFING — interactive widgets (scoped) ===== */
+(function(){
+  'use strict';
+
+  /* ---- FAQ accordion ---- */
+  (function(){
+    var faq = document.getElementById('erpFaq');
+    if(!faq) return;
+    faq.querySelectorAll('.bk-faq-item .bk-faq-q').forEach(function(q){
+      q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
+    });
+  })();
+
+  /* ---- Affiliate Earnings Calculator ----
+     Воспроизводит данные со скрина: 3 реферала/мес, $5K/mo сделка → $1K / $16K / $81K, hero $16K/yr.
+     ФЛАГ: формула реконструирована по ОДНОЙ видимой точке. Инфо-бокс заявляет 10%, но выводы
+     ($16K годовых, $81K за 5 лет при 3×$5K) сходятся при эффективной ставке ~9% (фактор удержания 0.9):
+       monthly = referrals × deal × 0.09;  annual = monthly×12;  5yr = monthly×60.
+     При (3, $5000): 1350 / 16200 / 81000 → округление до $K даёт $1K / $16K / $81K и $16K/yr — точное совпадение.
+     На других позициях слайдеров может расходиться с источником — заменить реальной формулой при наличии. */
+  (function(){
+    var calc = document.getElementById('affCalc');
+    if(!calc) return;
+    var ref = document.getElementById('affRef'),
+        deal = document.getElementById('affDeal'),
+        refV = document.getElementById('affRefV'),
+        dealV = document.getElementById('affDealV'),
+        mEl = document.getElementById('affMonthly'),
+        aEl = document.getElementById('affAnnual'),
+        fEl = document.getElementById('affFive'),
+        heroEl = document.getElementById('affHeroV');
+    var RATE = 0.09; // эффективная ставка (см. флаг выше)
+    function fmtK(n){ return '$' + Math.round(n/1000) + 'K'; }
+    function render(){
+      var r = parseInt(ref.value, 10) || 0,
+          d = parseInt(deal.value, 10) || 0;
+      var monthly = r * d * RATE;
+      refV.textContent = r;
+      dealV.textContent = '$' + Math.round(d/1000) + 'K/mo';
+      mEl.textContent = fmtK(monthly);
+      aEl.textContent = fmtK(monthly * 12);
+      fEl.textContent = fmtK(monthly * 60);
+      heroEl.textContent = fmtK(monthly * 12) + '/yr';
+    }
+    ref.addEventListener('input', render);
+    deal.addEventListener('input', render);
+    render();
+  })();
+
+})();
+
+</script>
+</body>
+</html>
